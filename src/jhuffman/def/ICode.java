@@ -12,9 +12,13 @@ public class ICode
 	 * @param i Es el i-esimo bit del codigo, contando de izquierda a derecha entre 0 y 127
 	 * @return El i-esimo bit (1 o 0) de este codigo Huffman (contando desde la izquierda)
 	 */
+	
+	int arr[] = new int[128];
+	int len = 0;
+	
 	public int getBitAt(int i)
 	{
-		return 0;
+		return arr[i];
 	}
 
 	
@@ -24,7 +28,7 @@ public class ICode
 	 */
 	public int getLength()
 	{
-		return 0;
+		return len;
 	}
 	
 	/**
@@ -34,5 +38,10 @@ public class ICode
 	 */
 	public void fromString(String sCod)
 	{	
+		for (int i=0;i<sCod.length();i++)
+		{
+			arr[i] = sCod.charAt(i);
+			len++;
+		}
 	}
 }
