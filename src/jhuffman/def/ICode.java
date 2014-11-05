@@ -41,7 +41,7 @@ public class ICode
 		for (int i=0;i<sCod.length();i++)
 		{
 			arr[i] = sCod.charAt(i);
-			len++;
 		}
+		len = sCod.length();
 	}
 }
