@@ -23,6 +23,9 @@ public class IFileCode
 			
 			for(int i=0; i<256; i++)
 			{
+				uFile.writeBit(i);
+				int len = table.arr[i].cod.getLength();
+				uFile.writeBit(len);
 				for( int j=0; i<table.arr[i].cod.len; j++)
 				{
 					int bit = table.arr[i].cod.getBitAt(j);			
