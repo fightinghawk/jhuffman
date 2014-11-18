@@ -3,7 +3,6 @@ package jhuffman.def;
 
 import java.io.File;
 import java.io.FileInputStream;
-import jhuffman.util.UFile;
 
 public class IFileInput
 {
@@ -27,19 +26,18 @@ public class IFileInput
 	
 	public ITable createTable()
 	{
-		ITable iT = new ITable();
+		ITable table = new ITable();
 			
 		try
 		{
 			// abro el archivo para leer los bits
 			fis = new FileInputStream(file);			
-			UFile uFile = new UFile(fis);
 						
-			int bit = uFile.readBit();
+			int bit = fis.read();
 			while( bit>=0 )
 			{
-				iT.addCount(bit);
-				bit = uFile.readBit();
+				table.addCount(bit);
+				bit = fis.read();
 			}			
 		}
 		catch(Exception e)
@@ -59,6 +57,6 @@ public class IFileInput
 				throw new RuntimeException(e2);
 			}
 		}
-		return iT;
+		return table;
 	}
 }
