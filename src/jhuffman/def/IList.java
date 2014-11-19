@@ -4,10 +4,6 @@ import java.util.Comparator;
 
 public class IList 
 {
-	///Hay que usar las funciones que tiene asociada node para asignar
-	// el siguiente para los nodos de la lista
-	
-	
 	private static final Node NULL = null;
 	Node p;
 	
@@ -21,12 +17,13 @@ public class IList
 	//inserta ordenado
 	public void addNode(Node n)
 	{
+		// Falta aplicar criterio de ordenamiento si los 2 son iguales
 		Node nuevo= new Node();
 		nuevo.setC(n.getC());
-		nuevo.setSig(NULL);
+		nuevo.setSig(NULL); 
 		Node ant=NULL;
 		Node aux=p;
-		while( aux!=NULL && aux.getC()<=n.getC())
+		while( aux!=NULL && aux.getC()<=n.getC() )
 		{
 		ant = aux;
 		aux = aux.getSig();
@@ -46,13 +43,17 @@ public class IList
 	
 	public ITree toTree()
 	{
+		// averiguar bien como se crea el arbol.
+		Node der= new Node();
+		Node izq= new Node();
+		der= removeFirstNode();
+		izq= removeFirstNode();
+		
+		
 		return null;
 	}
 	
-	/*la interfaz es una definicion de una clase, la funcion comparator es una
-	 * interfaz
-	 * 
-	 */
+	// averiguar bien que hace esto.
 	public Comparator<Node> getComparator()
 	{
 		return null;
