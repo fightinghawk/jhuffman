@@ -27,17 +27,17 @@ public class IFileCode
 			
 			for(int i=0; i<256; i++)
 			{
-				if(table.arr[i].n>0)
+				if(table.getCount(i)>0)
 				{
-					int nCod = table.arr[i].cod.getLength(); 
+					int nCod = table.getCode(i).getLength(); 
 					//int m = nCod/8 + (nCod%8 !=0 ? 1:0);
 					fos.write(i); //Grabo el caracter.					
 					fos.write(nCod); // Grabo la longitud del codigo.
 					for(int j=0; j<nCod; j++)
 					{
-						//Grabo el codigo bit a bit.
-						uFile.writeBit(table.arr[i].cod.getBitAt(j));						
+						uFile.writeBit(table.getCode(i).getBitAt(j));
 					}	
+					uFile.flush();
 				}
 			}
 		}
@@ -76,7 +76,7 @@ public class IFileCode
 			while (c>=0)
 			{			
 				nCod = fis.read(); 	//Leo la longitud del codigo.
-				table.arr[c].cod.len = nCod;
+				table.getCode(c).len = nCod;
 				//int m = nCod/8 + (nCod%8 !=0 ? 1:0);
 				//int v = Integer.parseInt("10101",2);
 				
@@ -84,7 +84,7 @@ public class IFileCode
 				{						
 					//Leo el codigo bit a bit.
 					bit = uFile.readBit();			
-					table.arr[c].cod.arr[j] = bit;
+					table.getCode(c).arr[j] = bit;
 				}							
 				c = fis.read();								
 			}			

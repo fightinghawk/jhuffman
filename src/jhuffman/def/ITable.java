@@ -11,7 +11,7 @@ public class ITable
 		ICode cod;
 	}
 	
-	Table arr[] = new Table[256];
+	private Table arr[] = new Table[256];
 	public void addCount(int c)
 	{	
 		arr[c].n++;
@@ -25,7 +25,18 @@ public class ITable
 	// a partir de los datos del array se crea la lista enlazada con la funcion add
 	public IList createSortedList()
 	{
-		return null;
+		IList lista = new IList();
+		Node nodo = new Node();
+		for (int i=0;i<256;i++)
+		{
+			if (getCount(i)>0)
+			{
+				nodo.setC(i);
+				nodo.setN(getCount(i));
+				lista.addNode(nodo);
+			}
+		}
+		return lista;
 	}
 	
 	// se lee el arbol hoja por hoja y se cargan los codigos en la tabla

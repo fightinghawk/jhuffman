@@ -16,7 +16,7 @@ public class IFileInput
 	
 	public String getFilename()
 	{		
-		return file.getPath();
+		return file.getName();
 	}
 	
 	public long getLength()
@@ -33,11 +33,11 @@ public class IFileInput
 			// abro el archivo para leer los bits
 			fis = new FileInputStream(file);			
 						
-			int bit = fis.read();
-			while( bit>=0 )
+			int c = fis.read();
+			while( c>=0 )
 			{
-				table.addCount(bit);
-				bit = fis.read();
+				table.addCount(c);
+				c = fis.read();
 			}			
 		}
 		catch(Exception e)

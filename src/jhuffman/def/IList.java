@@ -1,10 +1,7 @@
 package jhuffman.def;
 
-import java.util.Comparator;
-
 public class IList 
 {
-	private static final Node NULL = null;
 	Node p;
 	
 	//desenlazar y devolver puntero, no liberarlo
@@ -20,21 +17,21 @@ public class IList
 		// Falta aplicar criterio de ordenamiento si los 2 son iguales
 		Node nuevo= new Node();
 		nuevo.setC(n.getC());
-		nuevo.setSig(NULL); 
-		Node ant=NULL;
+		nuevo.setSig(null); 
+		Node ant=null;
 		Node aux=p;
-		while( aux!=NULL && aux.getC()<=n.getC() )
+		while( aux!=null && compareNode(aux, n)<=0)
 		{
-		ant = aux;
-		aux = aux.getSig();
+			ant = aux;
+			aux = aux.getSig();
 		}
-		if( ant==NULL )
+		if( ant==null )
 		{
-		p = nuevo;
+			p = nuevo;
 		}
 		else
 		{
-		ant.setSig(nuevo);
+			ant.setSig(nuevo);
 		}
 		nuevo.setSig(aux);
 	}
@@ -43,19 +40,29 @@ public class IList
 	
 	public ITree toTree()
 	{
-		// averiguar bien como se crea el arbol.
-		Node der= new Node();
-		Node izq= new Node();
-		der= removeFirstNode();
-		izq= removeFirstNode();
 		
+		Node izq= removeFirstNode();
 		
-		return null;
+		while(p!=null)
+		{
+			Node der= removeFirstNode();
+			Node aux = new Node();
+			aux.setDer(izq);
+			aux.setIzq(der);
+			addNode(aux);
+			izq= removeFirstNode();
+		}
+		ITree arbol = new ITree();
+		arbol.setRoot(izq);
+		return arbol;
 	}
 	
 	// averiguar bien que hace esto.
-	public Comparator<Node> getComparator()
+	public long compareNode(Node n1, Node n2)
 	{
-		return null;
+		long N1, N2;
+		N1=n1.getN();
+		N2=n2.getN();
+		return N1<N2?1:N1>N2?-1:n1.getC()<n2.getC()?1:0;
 	}
 }

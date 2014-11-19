@@ -19,7 +19,7 @@ public class IFileCompressed
 
 	public String getFilename()
 	{
-		return file.getPath();
+		return file.getName();
 	}
 	
 	public void save(IFileInput fi, ITable table)
@@ -34,14 +34,18 @@ public class IFileCompressed
 			long longitudFile = fi.getLength();
 			uFileOut.writeLength(longitudFile);
 			
-			for(long l=0; l<longitudFile; l++)
+			int c = fis.read();
+			while (c>=0)
 			{
-				int bit = fis.read();
-				for(int i=0; i<table.arr[bit].cod.getLength(); i++)
+				
+				for(int i=0; i<table.getCode(c).getLength(); i++)
 				{
-					uFileOut.writeBit(table.arr[bit].cod.getBitAt(i));	
+					uFileOut.writeBit(table.getCode(c).getBitAt(i));	
 				}			
+				
+				c = fis.read();
 			}
+			uFileOut.flush();
 		}
 		catch(Exception e)
 		{
