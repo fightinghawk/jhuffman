@@ -17,6 +17,7 @@ public class IList
 		// Falta aplicar criterio de ordenamiento si los 2 son iguales
 		Node nuevo= new Node();
 		nuevo.setC(n.getC());
+		nuevo.setN(n.getN());
 		nuevo.setSig(null); 
 		Node ant=null;
 		Node aux=p;
@@ -49,6 +50,7 @@ public class IList
 			Node aux = new Node();
 			aux.setDer(izq);
 			aux.setIzq(der);
+			aux.setN(izq.getN()+der.getN());
 			addNode(aux);
 			izq= removeFirstNode();
 		}
@@ -63,6 +65,6 @@ public class IList
 		long N1, N2;
 		N1=n1.getN();
 		N2=n2.getN();
-		return N1<N2?1:N1>N2?-1:n1.getC()<n2.getC()?1:0;
+		return N1<N2?-1:N1>N2?1:n1.getC()<n2.getC()?0:1;
 	}
 }
