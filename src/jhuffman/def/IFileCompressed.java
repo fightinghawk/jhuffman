@@ -78,13 +78,12 @@ public class IFileCompressed
 			
 			for (long l=0; l<longitudFile; l++)
 			{
-				while (nodo.getSig()!=null)
+				while (nodo.getIzq()!=null || nodo.getDer()!=null)
 				{
 					int bit = uFileIn.readBit();
-					if (bit==1)			
+					if (bit==0)			
 					{
-						nodo = nodo.getIzq();
-						
+						nodo = nodo.getIzq();						
 					}
 					else
 					{

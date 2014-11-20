@@ -29,15 +29,16 @@ public class IFileCode
 			{
 				if(table.getCount(i)>0)
 				{
-					int nCod = table.getCode(i).getLength(); 
-					//int m = nCod/8 + (nCod%8 !=0 ? 1:0);
-					fos.write(i); //Grabo el caracter.					
-					fos.write(nCod); // Grabo la longitud del codigo.
+					fos.write(i); 		//Grabo el caracter.	
+					int nCod = table.getCode(i).getLength(); 							
+					fos.write(nCod); 	// Grabo la longitud del codigo.
+					uFile.writeLength(table.getCount(i));		//Grabo las ocurrencias del caracter.
+					
 					for(int j=0; j<nCod; j++)
 					{
-						uFile.writeBit(table.getCode(i).getBitAt(j));
+						uFile.writeBit(table.getCode(i).getBitAt(j)); 	//Grabo el codigo bit a bit.
 					}	
-					uFile.flush();
+					uFile.flush(); //Completo el byte con ceros.
 				}
 			}
 		}
@@ -77,18 +78,21 @@ public class IFileCode
 			{			
 				nCod = fis.read(); 	//Leo la longitud del codigo.
 				table.getCode(c).len = nCod;
-				//int m = nCod/8 + (nCod%8 !=0 ? 1:0);
-				//int v = Integer.parseInt("10101",2);
-				
+				long ocurrencias = uFile.readLength();	//Leo ocurrencias.
+				table.setCount(c,ocurrencias);
+										
 				for(int j=0; j<nCod; j++)
 				{						
 					//Leo el codigo bit a bit.
 					bit = uFile.readBit();			
 					table.getCode(c).arr[j] = bit;
 				}	
-				for(int j=nCod;j<8;j++)
+				if (nCod%8 != 0)
 				{
-					bit = uFile.readBit();
+					for(int j=nCod;j<(1+nCod/8)*8;j++) //Completo la lectura del byte antes de leer el otro caracter.
+					{
+						bit = uFile.readBit();
+					}
 				}
 				c = fis.read();								
 			}			

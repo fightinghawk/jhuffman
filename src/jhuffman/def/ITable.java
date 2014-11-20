@@ -13,7 +13,7 @@ public class ITable
 	
 	public class Table
 	{
-	private campos arr[] = new campos[256];
+		private campos arr[] = new campos[256];
 	
 		public Table()
 		{
@@ -34,6 +34,11 @@ public class ITable
 	public long getCount(int c)
 	{
 		return tabla.arr[c].n;
+	}
+	
+	public void setCount(int c, long o) //Agregado para resolver tema de ocurrencias.
+	{
+		tabla.arr[c].n = o;
 	}
 	
 	// a partir de los datos del array se crea la lista enlazada con la funcion add
@@ -70,7 +75,6 @@ public class ITable
 			hoja = tree.next(codHuffman);
 		}
 	}
-	
 	
 	public ICode getCode(int c)
 	{
