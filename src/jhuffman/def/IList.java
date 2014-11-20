@@ -18,6 +18,8 @@ public class IList
 		Node nuevo= new Node();
 		nuevo.setC(n.getC());
 		nuevo.setN(n.getN());
+		nuevo.setDer(n.getDer());
+		nuevo.setIzq(n.getIzq());
 		nuevo.setSig(null); 
 		Node ant=null;
 		Node aux=p;
@@ -43,16 +45,19 @@ public class IList
 	{
 		
 		Node izq= removeFirstNode();
-		
+		int i=257;
 		while(p!=null)
 		{
+
 			Node der= removeFirstNode();
 			Node aux = new Node();
 			aux.setDer(izq);
 			aux.setIzq(der);
 			aux.setN(izq.getN()+der.getN());
+			aux.setC(i);
 			addNode(aux);
 			izq= removeFirstNode();
+			i++;
 		}
 		ITree arbol = new ITree();
 		arbol.setRoot(izq);

@@ -62,7 +62,7 @@ public class IFileCode
 
 	public ITree load()
 	{
-		ITree tree = null;
+		ITree tree = new ITree();
 		ITable table = new ITable();
 		try
 		{
@@ -85,7 +85,11 @@ public class IFileCode
 					//Leo el codigo bit a bit.
 					bit = uFile.readBit();			
 					table.getCode(c).arr[j] = bit;
-				}							
+				}	
+				for(int j=nCod;j<8;j++)
+				{
+					bit = uFile.readBit();
+				}
 				c = fis.read();								
 			}			
 		}
@@ -113,6 +117,7 @@ public class IFileCode
 		
 		//Armo arbol:
 		tree = list.toTree();
+		
 		
 		return tree;
 	}

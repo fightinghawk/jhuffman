@@ -7,8 +7,8 @@ public class ITable
 {
 	public class campos
 	{
-		long n=0;
-		ICode cod;
+		long n = 0;
+		ICode cod = new ICode();
 	}
 	
 	public class Table
@@ -61,7 +61,13 @@ public class ITable
 		while (hoja != null)
 		{
 			int c = hoja.getC();
-			tabla.arr[c].cod = codHuffman;
+			//tabla.arr[c].cod = codHuffman;
+			for(int i=0;i<codHuffman.len;i++)
+			{
+				tabla.arr[c].cod.arr[i] = codHuffman.getBitAt(i);
+			}
+			tabla.arr[c].cod.len = codHuffman.getLength();
+			hoja = tree.next(codHuffman);
 		}
 	}
 	

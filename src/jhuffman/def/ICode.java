@@ -40,7 +40,16 @@ public class ICode
 	{	
 		for (int i=0;i<sCod.length();i++)
 		{
-			arr[i] = sCod.charAt(i);
+			int code;
+			if (sCod.charAt(i) == 48)
+			{
+				code = 0;
+			}
+			else
+			{
+				code = 1;
+			}
+			arr[i] = code;
 		}
 		len = sCod.length();
 	}
