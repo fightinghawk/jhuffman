@@ -36,8 +36,7 @@ public class IFileCompressed
 			
 			int c = fis.read();
 			while (c>=0)
-			{
-				
+			{			
 				for(int i=0; i<table.getCode(c).getLength(); i++)
 				{
 					uFileOut.writeBit(table.getCode(c).getBitAt(i));	
@@ -68,5 +67,50 @@ public class IFileCompressed
 	
 	public void restore(IFileInput fi, ITree tree)
 	{
+		try
+		{
+			fis = new FileInputStream(file);
+			fos = new FileOutputStream(fi.getFilename());
+			UFile uFileIn = new UFile(fis);
+			
+			long longitudFile = uFileIn.readLength();
+			Node nodo = tree.getRoot();
+			
+			for (long l=0; l<longitudFile; l++)
+			{
+				while (nodo.getSig()!=null)
+				{
+					int bit = uFileIn.readBit();
+					if (bit==1)			
+					{
+						nodo = nodo.getIzq();
+						
+					}
+					else
+					{
+						nodo = nodo.getDer();
+					}
+				}
+				fos.write(nodo.getC());	
+				nodo = tree.getRoot();
+			}					
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		finally
+		{
+			try
+			{
+				if(fos!=null) fos.close();
+			}
+			catch(Exception e2)
+			{
+				e2.printStackTrace();
+				throw new RuntimeException(e2);
+			}
+		}		
 	}
 }

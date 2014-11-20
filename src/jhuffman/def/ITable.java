@@ -5,21 +5,35 @@ package jhuffman.def;
 // hacer un array de clases
 public class ITable
 {
-	public class Table
+	public class campos
 	{
 		long n=0;
 		ICode cod;
 	}
 	
-	private Table arr[] = new Table[256];
+	public class Table
+	{
+	private campos arr[] = new campos[256];
+	
+		public Table()
+		{
+			for (int i=0;i<256;i++)
+			{
+				arr[i] = new campos();
+			}
+		}
+	}
+	
+	Table tabla = new Table();
+	
 	public void addCount(int c)
-	{	
-		arr[c].n++;
+	{
+		tabla.arr[c].n++;
 	}
 	
 	public long getCount(int c)
 	{
-		return arr[c].n;
+		return tabla.arr[c].n;
 	}
 	
 	// a partir de los datos del array se crea la lista enlazada con la funcion add
@@ -42,18 +56,18 @@ public class ITable
 	// se lee el arbol hoja por hoja y se cargan los codigos en la tabla
 	public void loadHuffmanCodes(ITree tree)
 	{
-		ICode codHuffman = null;
+		ICode codHuffman = new ICode();
 		Node hoja = tree.next(codHuffman);
 		while (hoja != null)
 		{
 			int c = hoja.getC();
-			arr[c].cod = codHuffman;
+			tabla.arr[c].cod = codHuffman;
 		}
 	}
 	
 	
 	public ICode getCode(int c)
 	{
-		return arr[c].cod;
+		return tabla.arr[c].cod;
 	}
 }
