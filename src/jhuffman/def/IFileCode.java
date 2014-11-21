@@ -1,17 +1,21 @@
 package jhuffman.def;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import jhuffman.util.UFile;
+import jhuffman.util.UBuffFile;
 
 
 public class IFileCode
 {
 	private File file = null;
-	private FileOutputStream fos = null;
-	private FileInputStream fis = null;
+	//private FileOutputStream fos = null;
+	//private FileInputStream fis = null;
+	private BufferedInputStream bis = null;
+	private BufferedOutputStream bos = null;
 	
 	public void setFilename(String f)
 	{		
@@ -22,16 +26,17 @@ public class IFileCode
 	{
 		try
 		{
-			fos = new FileOutputStream(file);
-			UFile uFile = new UFile(fos);
+			//fos = new FileOutputStream(file);
+			bos = new BufferedOutputStream(new FileOutputStream(file));
+			UBuffFile uFile = new UBuffFile(bos);
 			
 			for(int i=0; i<256; i++)
 			{
 				if(table.getCount(i)>0)
 				{
-					fos.write(i); 		//Grabo el caracter.	
+					bos.write(i); 		//Grabo el caracter.	
 					int nCod = table.getCode(i).getLength(); 							
-					fos.write(nCod); 	// Grabo la longitud del codigo.
+					bos.write(nCod); 	// Grabo la longitud del codigo.
 					uFile.writeLength(table.getCount(i));		//Grabo las ocurrencias del caracter.
 					
 					for(int j=0; j<nCod; j++)
@@ -51,7 +56,7 @@ public class IFileCode
 		{
 			try
 			{
-				if(fos!=null) fos.close();
+				if(bos!=null) bos.close();
 			}
 			catch(Exception e2)
 			{
@@ -67,16 +72,17 @@ public class IFileCode
 		ITable table = new ITable();
 		try
 		{
-			fis = new FileInputStream(file);			
-			UFile uFile = new UFile(fis);
+			//fis = new FileInputStream(file);
+			bis = new BufferedInputStream(new FileInputStream(file));
+			UBuffFile uFile = new UBuffFile(bis);
 			
 			//Cargo la tabla:	
 			int c, nCod, bit; 
-			c = fis.read(); 		//Leo que caracter es.
+			c = bis.read(); 		//Leo que caracter es.
 			
 			while (c>=0)
 			{			
-				nCod = fis.read(); 	//Leo la longitud del codigo.
+				nCod = bis.read(); 	//Leo la longitud del codigo.
 				table.getCode(c).len = nCod;
 				long ocurrencias = uFile.readLength();	//Leo ocurrencias.
 				table.setCount(c,ocurrencias);
@@ -94,7 +100,7 @@ public class IFileCode
 						bit = uFile.readBit();
 					}
 				}
-				c = fis.read();								
+				c = bis.read();								
 			}			
 		}
 		catch(Exception e)
@@ -106,7 +112,7 @@ public class IFileCode
 		{
 			try
 			{
-				if(fis!=null) fis.close();
+				if(bis!=null) bis.close();
 			}
 			catch(Exception e2)
 			{

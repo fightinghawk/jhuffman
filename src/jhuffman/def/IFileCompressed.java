@@ -1,16 +1,18 @@
 package jhuffman.def;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.File;
 
-import jhuffman.util.UFile;
+import jhuffman.util.UBuffFile;
 
 public class IFileCompressed
 {
-	File file = null;
-	FileOutputStream fos = null;
-	FileInputStream fis = null;
+	private File file = null;
+	private BufferedInputStream bis = null;
+	private BufferedOutputStream bos = null;
 	
 	public void setFilename(String filename)
 	{		
@@ -26,15 +28,17 @@ public class IFileCompressed
 	{
 		try
 		{
-			fis = new FileInputStream(fi.getFilename());
-			fos = new FileOutputStream(file);
-			UFile uFileOut = new UFile(fos);
+			//fis = new FileInputStream(fi.getFilename());
+			//fos = new FileOutputStream(file);
+			bis = new BufferedInputStream(new FileInputStream(fi.getFilename()));
+			bos = new BufferedOutputStream(new FileOutputStream(file));
+			UBuffFile uFileOut = new UBuffFile(bos);
 			
 			//Grabo la longitud del archivo original:
 			long longitudFile = fi.getLength();
 			uFileOut.writeLength(longitudFile);
 			
-			int c = fis.read();
+			int c = bis.read();
 			while (c>=0)
 			{			
 				for(int i=0; i<table.getCode(c).getLength(); i++)
@@ -42,7 +46,7 @@ public class IFileCompressed
 					uFileOut.writeBit(table.getCode(c).getBitAt(i));	
 				}			
 				
-				c = fis.read();
+				c = bis.read();
 			}
 			uFileOut.flush();
 		}
@@ -55,7 +59,8 @@ public class IFileCompressed
 		{
 			try
 			{
-				if(fos!=null) fos.close();
+				if(bos!=null) bos.close();
+				if(bis!=null) bis.close();
 			}
 			catch(Exception e2)
 			{
@@ -69,9 +74,11 @@ public class IFileCompressed
 	{
 		try
 		{
-			fis = new FileInputStream(file);
-			fos = new FileOutputStream(fi.getFilename());
-			UFile uFileIn = new UFile(fis);
+			//fis = new FileInputStream(file);
+			//fos = new FileOutputStream(fi.getFilename());			
+			bis = new BufferedInputStream(new FileInputStream(file));
+			bos = new BufferedOutputStream(new FileOutputStream(fi.getFilename()));
+			UBuffFile uFileIn = new UBuffFile(bis);
 			
 			long longitudFile = uFileIn.readLength();
 			Node nodo = tree.getRoot();
@@ -90,7 +97,7 @@ public class IFileCompressed
 						nodo = nodo.getDer();
 					}
 				}
-				fos.write(nodo.getC());	
+				bos.write(nodo.getC());	
 				nodo = tree.getRoot();
 			}					
 		}
@@ -103,7 +110,7 @@ public class IFileCompressed
 		{
 			try
 			{
-				if(fos!=null) fos.close();
+				if(bos!=null) bos.close();
 			}
 			catch(Exception e2)
 			{

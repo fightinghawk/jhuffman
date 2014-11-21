@@ -1,6 +1,7 @@
 
 package jhuffman.def;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -8,6 +9,7 @@ public class IFileInput
 {
 	File file = null;
 	FileInputStream fis = null;
+	BufferedInputStream bis = null;
 	
 	public void setFilename(String filename)
 	{	
@@ -31,13 +33,14 @@ public class IFileInput
 		try
 		{
 			// abro el archivo para leer los bits
-			fis = new FileInputStream(file);			
+			//fis = new FileInputStream(file);
+			bis = new BufferedInputStream(new FileInputStream(file));
 						
-			int c = fis.read();
+			int c = bis.read();
 			while( c>=0 )
 			{
 				table.addCount(c);
-				c = fis.read();
+				c = bis.read();
 			}			
 		}
 		catch(Exception e)
@@ -49,7 +52,7 @@ public class IFileInput
 		{
 			try
 			{
-				if(fis!=null) fis.close();
+				if(bis!=null) bis.close();
 			}
 			catch(Exception e2)
 			{

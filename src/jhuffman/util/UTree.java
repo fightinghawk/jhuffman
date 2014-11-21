@@ -2,7 +2,6 @@ package jhuffman.util;
 
 import java.util.Stack;
 
-import jhuffman.def.ICode;
 import jhuffman.def.Node;
 
 public class UTree
