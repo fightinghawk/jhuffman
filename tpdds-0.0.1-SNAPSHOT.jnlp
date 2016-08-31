@@ -9,16 +9,16 @@
   <resources>
     <j2se version="1.7+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="tpdds-0.0.1-SNAPSHOT-jfx.jar" size="97211" download="null" />
-    <jar href="lib\activation-1.1.jar" size="62983" download="null" />
-    <jar href="lib\jackson-annotations-2.7.4.jar" size="50897" download="null" />
-    <jar href="lib\jackson-core-2.7.4.jar" size="253001" download="null" />
-    <jar href="lib\jackson-databind-2.7.4.jar" size="1204187" download="null" />
-    <jar href="lib\jackson-jaxrs-base-2.7.4.jar" size="29949" download="null" />
-    <jar href="lib\jackson-jaxrs-json-provider-2.7.4.jar" size="16775" download="null" />
-    <jar href="lib\jackson-module-jaxb-annotations-2.7.4.jar" size="34579" download="null" />
-    <jar href="lib\javax.mail-api-1.5.5.jar" size="203142" download="null" />
-    <jar href="lib\mail-1.5.0-b01.jar" size="519087" download="null" />
-    <jar href="lib\mysql-connector-java-5.1.38.jar" size="983911" download="null" />
+    <jar href="lib/activation-1.1.jar" size="62983" download="null" />
+    <jar href="lib/jackson-annotations-2.7.4.jar" size="50897" download="null" />
+    <jar href="lib/jackson-core-2.7.4.jar" size="253001" download="null" />
+    <jar href="lib/jackson-databind-2.7.4.jar" size="1204187" download="null" />
+    <jar href="lib/jackson-jaxrs-base-2.7.4.jar" size="29949" download="null" />
+    <jar href="lib/jackson-jaxrs-json-provider-2.7.4.jar" size="16775" download="null" />
+    <jar href="lib/jackson-module-jaxb-annotations-2.7.4.jar" size="34579" download="null" />
+    <jar href="lib/javax.mail-api-1.5.5.jar" size="203142" download="null" />
+    <jar href="lib/mail-1.5.0-b01.jar" size="519087" download="null" />
+    <jar href="lib/mysql-connector-java-5.1.38.jar" size="983911" download="null" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="tpdds.interfaz.Main"  name="tpdds-0.0.1-SNAPSHOT" />
   <update check="background"/>
