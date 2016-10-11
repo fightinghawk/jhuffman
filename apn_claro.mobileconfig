@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadContent</key>
+			<array>
+				<dict>
+					<key>DefaultsData</key>
+					<dict>
+						<key>apns</key>
+						<array>
+							<dict>
+								<key>apn</key>
+								<string>internet.ctimovil.com.ar</string>
+<key>password</key> 
+<string>ctigprs999</string> 
+<key>proxyPort</key> 
+<integer>0</integer> 
+<key>username</key> 
+<string>ctigprs</string>
+							</dict>
+						</array>
+					</dict>
+					<key>DefaultsDomainName</key>
+					<string>com.apple.managedCarrier</string>
+				</dict>
+			</array>
+			<key>PayloadDescription</key>
+			<string>Provides customization of carrier Access Point Name.</string>
+			<key>PayloadDisplayName</key>
+			<string>Advanced Settings</string>
+			<key>PayloadIdentifier</key>
+			<string>Ben.apn1</string>
+			<key>PayloadOrganization</key>
+			<string>iPhonesetiings.net</string>
+			<key>PayloadType</key>
+			<string>com.apple.apn.managed</string>
+			<key>PayloadUUID</key>
+			<string>B0F7AB6C-65FE-4241-9850-43B90E7C3F72</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Internet instellingen</string>
+	<key>PayloadDisplayName</key>
+	<string>APN Instellingen</string>
+	<key>PayloadIdentifier</key>
+	<string>Ben</string>
+	<key>PayloadOrganization</key>
+	<string>iPhonesetiings.net</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>838A7C06-1BF7-432E-B5B1-4E43267F8F10</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
+
+
+
+
