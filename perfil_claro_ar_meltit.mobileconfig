@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadContent</key>
+			<array>
+				<dict>
+					<key>DefaultsData</key>
+					<dict>
+						<key>apns</key>
+						<array>
+							<dict>
+								<key>apn</key><string>internet.ctimovil.com.ar</string>
+								<key>password</key>
+								<string>ctigprs999</string>
+								<key>type-mask</key><integer>-2</integer>
+								<key>username</key><string>ctigprs</string>
+							</dict>
+							<dict>
+								<key>apn</key>
+								<string>vvm.claro.com.ar</string>
+								<key>password</key>
+								<string>vvmclaro</string>
+								<key>type-mask</key>
+								<integer>-2</integer>
+								<key>username</key>
+								<string>vvm</string>
+							</dict>
+						</array>
+					</dict>
+					<key>DefaultsDomainName</key>
+					<string>com.apple.managedCarrier</string>
+				</dict>
+			</array>
+			<key>PayloadDescription</key>
+			<string>Provides customization of carrier Access Point Name.</string>
+			<key>PayloadDisplayName</key>
+			<string>Advanced Settings</string>
+			<key>PayloadIdentifier</key>
+			<string>meltit.profile.vvm</string>
+			<key>PayloadOrganization</key>
+			<string>Claro AR VVM</string>
+			<key>PayloadType</key>
+			<string>com.apple.apn.managed</string>
+			<key>PayloadUUID</key>
+			<string>D39F0171-21ED-4D6D-B951-2F25071EC3A5</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Habilitar Tethering y VVM en Claro AR: Perfil de meltit.com.ar</string>
+	<key>PayloadDisplayName</key>
+	<string>Tethering Claro AR de meltit.com.ar</string>
+	<key>PayloadIdentifier</key>
+	<string>meltit.profile.vvm</string>
+	<key>PayloadOrganization</key>
+	<string>meltit.com.ar</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>968AF6E9-6771-41F6-A57C-3B2BC0DA203F</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
